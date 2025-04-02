@@ -1,0 +1,38 @@
+<h1>
+  Symple System
+</h1>
+
+
+
+<form>
+
+  <img [src]="imagePath" class="card-img-top" [ngStyle] = "{'width.px': 150, 'height.px': 150}">
+
+  <input type="text" placeholder="Título"  class="form-control" name="titulo" [(ngModel)] = "livro.titulo">
+  <input type="text" placeholder="Editora" class="form-control" name="editora" [(ngModel)] = "livro.editora">
+
+  <input type="button" value="Cadastrar" *ngIf="buttonCad" class="btn btn-primary" (click)="create()">
+  <input type="button" value="Atualizar" *ngIf="!buttonCad" class="btn btn-warning" (click)="update()">
+  <input type="button" value="Remover"   *ngIf="!buttonCad" class="btn btn-danger" (click)="remove()">
+  <input type="button" value="Cancelar"  *ngIf="!buttonCad" class="btn btn-secondary" (click)="cancel()">
+</form>
+
+<table class="table" *ngIf="tabela">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th>Editora</th>
+      <th>Select</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor = "let b of books; index as i">
+      <td>{{b.codigo}}</td>
+      <td>{{b.titulo}}</td>
+      <td>{{b.editora}}</td>
+      <td> <button class="btn btn-success" (click)="selectOne(i)"> Select</button> </td>
+    </tr>
+  </tbody>
+</table>
